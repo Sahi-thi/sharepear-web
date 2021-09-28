@@ -1,0 +1,402 @@
+<!-- top comment box -->
+
+<div class="commentside">
+  <div class="sidecomment headercomment" >
+    <div class="headerinfo">
+
+      <a class="logolink w-inline-block">
+        <img src="assets/iconfinder_pear_2564980.svg" loading="lazy" alt="" class="pearlogo" data-ix="wiggle">
+      </a>
+      <a class="profileblock w-inline-block">
+        <div class="alignrow">
+          <div>
+            <div class="sidecomment-name">Mat Vogels</div>
+          </div>
+          <img src="assets/mat.jpg" loading="lazy" alt="" class="commentface rightface">
+          <div class="swapicon-block">
+            <img src="assets/iconfinder-icon-32.svg" loading="lazy" alt="">
+          </div>
+        </div>
+      </a>
+    </div>
+    <!-- new comment -->
+    <div class="alignrow sides" >
+      <div class="sideheader fielded"><input type="text" placeholder="Add a Title..."></div>
+      <div class="timestamp large">1:33</div>
+    </div>
+    <div class="sidecomment-comment sides"><input type="text" placeholder="Add a Description..."></div>
+    <div class="alignrow sides " *ngIf="false" >
+      <div class="sideheader">Mobile Reward Card</div>
+      <div class="timestamp large">1:33</div>
+    </div>
+    <div  *ngIf="false" class="sidecomment-comment lesstop d-none">Quick overview of the new Reward Card flow.</div>
+    <div class="alignrow author">
+      <div class="alignrow"><img src="assets/mat.jpg" loading="lazy" alt="" class="commentface">
+        <div>
+          <div class="sidecomment-name">Mat Vogels</div>
+          <div class="sidecomment-date">4 hours ago</div>
+        </div>
+      </div>
+    </div>
+    <a class="copybutton w-inline-block">
+      <div>Copy share link</div><img src="assets/link.svg" loading="lazy" width="12" alt="" class="linkimg">
+    </a>
+    <!-- <a class="copybutton w-inline-block " style="cursor:pointer" >
+      <div>Add New Comment</div><img src="assets/link.svg" loading="lazy" width="12" alt="" class="linkimg">
+    </a> -->
+  </div>
+
+<!-- empty state of comments -->
+  <div class="subcomments-wrapper floating" *ngIf="false" >
+    <div class="emptytext">
+      <div class="htheader">No comments here yet... Share with others or start adding comments yourself.</div>
+      <div class="htblock"><img src="assets/Spot.svg" loading="lazy" alt="" class="hticon">
+        <div>Use the pointer to click on a specific spot within the video.</div>
+      </div>
+      <div class="htblock"><img src="assets/Pencil.svg" loading="lazy" alt="" class="hticon pencil">
+        <div>Use the pencil to draw anywhere on the frame itself.</div>
+      </div>
+      <div class="htblock"><img src="assets/iconfinder-icon-28.svg" loading="lazy" alt="" class="hticon click">
+        <div>Double click anywhere on the frame to leave a comment for the whole frame.</div>
+      </div>
+      <div class="htblock"><img src="assets/iconfinder-icon-31.svg" loading="lazy" alt="" class="hticon clock">
+        <div>Click and drag on the timeline itself to leave a comment for multiple seconds.</div>
+      </div>
+      <div class="htblock"><img src="assets/iconfinder-icon-29.svg" loading="lazy" alt="" class="hticon click">
+        <div>Look out for shortcuts to speed up your workflow (e.g. ctrl+p).</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- comments active and completed -->
+  <div class="subcomments-wrapper floating" >
+    <div data-duration-in="300" data-duration-out="100" class="w-tabs">
+      <div class="tabsmenu w-tab-menu">
+        <a (click)="onClickActive()" [ngClass]="isCompleted?'':'w--current'" class="tablink w-inline-block w-tab-link">
+          <div>Active ({{totalActiveCommentsCount}})</div>
+        </a>
+        <a (click)="onClickCompleted()" [ngClass]="!isCompleted?'':'w--current'" class="tablink w-inline-block w-tab-link ">
+          <div>Completed ({{totalCompletedCommentsCount}})</div>
+        </a>
+        
+      </div>
+      <div class="w-tab-content">
+        <div *ngIf="!isCompleted" class="w-tab-pane">
+
+          <!-- add comment -->
+          <div class="sidecomment commentcomment active" *ngIf="addNewComment">
+            <div class="alignrow commentsheader">
+              <div class="alignrow">
+                <img src="assets/mat.jpg" loading="lazy" alt="" class="commentface">
+                <div>
+                  <div class="sidecomment-name">Mat Vogels</div>
+                  <div class="sidecomment-date">Just now</div>
+                </div>
+              </div>
+              <div class="alignrow movedup">
+                <div class="timestamp">0:05</div>
+              </div>
+            </div>
+            <div class="formblock w-form">
+              <div data-duration-in="300" data-duration-out="100" class="w-tabs">
+                <div class="commenttabs w-tab-menu">
+                  <a class="commenttab w-inline-block w-tab-link w--current">
+                    <div>Text</div>
+                  </a>
+                  <a  *ngIf="false" class="commenttab w-inline-block w-tab-link">
+                    <div>Audio</div>
+                  </a>
+                  <a *ngIf="false" class="commenttab w-inline-block w-tab-link">
+                    <div>Audio + Screen</div>
+                  </a>
+                </div>
+                <div class="w-tab-content">
+                  <form [formGroup]="addNewCommentForm" >
+                  <div class="w-tab-pane w--tab-active">
+                    <textarea placeholder="Add a new comment..." class="textarea w-input" formControlName ="content" ></textarea>
+                    <div class="divider"></div>
+                    <a class="button commentbutton w-button" (click)='onClickAddComment()'>Add text comment</a>
+                  </div>
+                  </form>
+                  <!-- <div class="w-tab-pane">
+                    <div class="startrecording-wrapper">
+                      <div class="audioon">
+                        <div class="paneldropdown-wrapper">
+                          <div class="alignrow">
+                            <div class="selectionpanel-icon mic" data-ix="mic-off"><img src="images/iconfinder-icon-27.svg" loading="lazy" alt=""></div>
+                            <div>Default - MacBook Pro Microp...</div>
+                          </div><img src="images/iconfinder-icon-21.svg" loading="lazy" alt="" class="dropdownarrow">
+                        </div>
+                      </div>
+                      <div class="mutedselected">
+                        <div class="paneldropdown-wrapper">
+                          <div class="alignrow">
+                            <div class="selectionpanel-icon mic" data-ix="mic-on"><img src="images/iconfinder-icon-26.svg" loading="lazy" alt=""></div>
+                            <div>Default - MacBook Pro Microph...</div>
+                          </div><img src="images/iconfinder-icon-21.svg" loading="lazy" alt="" class="dropdownarrow">
+                        </div>
+                      </div>
+                      <div class="button commentbutton dark" data-ix="record-audio">
+                        <div>Record audio</div>
+                      </div>
+                    </div>
+                    <div class="recordingwrapper" data-ix="display-none">
+                      <div class="audiorecording">
+                        <div class="alignrow">
+                          <div data-w-id="20f9b9b9-28c9-233e-8cf7-e37740c095a3" data-animation-type="lottie" data-src="documents/lf30_editor_weyy3mvg.json" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="2.9" data-duration="0" class="recordinglottie"></div>
+                          <div>Recording</div>
+                        </div>
+                        <div><strong>1:04</strong></div>
+                      </div>
+                      <div class="button commentbutton red" data-ix="stop-recording">
+                        <div>Stop recording</div>
+                      </div>
+                    </div>
+                    <div class="finishedrecording-wrapper" data-ix="display-none">
+                      <div class="audiorecorded">
+                        <a href="#" class="play-icon inline w-inline-block"><img src="images/iconfinder-icon-14.svg" loading="lazy" alt=""></a>
+                        <div class="div-block">
+                          <div class="alignrow">
+                            <div class="playbacktime">0:23 / 1:14</div>
+                          </div>
+                          <div class="playertime-wrapper">
+                            <div class="playertime"></div>
+                          </div>
+                        </div><img src="images/Deleted.svg" loading="lazy" alt="" class="deleteicon" data-ix="delete-audio-recording">
+                      </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="activerecording-button" data-ix="display-none">
+                      <a href="#" class="button commentbutton w-button">Add audio comment</a>
+                    </div>
+                    <div class="dimrecording-button">
+                      <a href="#" class="button commentbutton dim w-button">Add audio comment</a>
+                    </div>
+                  </div>
+                  <div class="w-tab-pane">
+                    <div class="startscreenrecording-wrapper">
+                      <div class="audioon">
+                        <div class="paneldropdown-wrapper">
+                          <div class="alignrow">
+                            <div class="selectionpanel-icon mic" data-ix="mic-off"><img src="images/iconfinder-icon-27.svg" loading="lazy" alt=""></div>
+                            <div>Default - MacBook Pro Microp...</div>
+                          </div><img src="images/iconfinder-icon-21.svg" loading="lazy" alt="" class="dropdownarrow">
+                        </div>
+                      </div>
+                      <div class="mutedselected">
+                        <div class="paneldropdown-wrapper">
+                          <div class="alignrow">
+                            <div class="selectionpanel-icon mic" data-ix="mic-on"><img src="images/iconfinder-icon-26.svg" loading="lazy" alt=""></div>
+                            <div>Default - MacBook Pro Microph...</div>
+                          </div><img src="images/iconfinder-icon-21.svg" loading="lazy" alt="" class="dropdownarrow">
+                        </div>
+                      </div>
+                      <div class="button commentbutton dark" data-ix="record-screen-audio">
+                        <div>Record audio + screen</div>
+                      </div>
+                    </div>
+                    <div class="finishedscreen-recording" data-ix="display-none">
+                      <div class="audiorecorded">
+                        <div class="play-icon inline"><img src="images/iconfinder-icon-14.svg" loading="lazy" alt=""></div>
+                        <div class="div-block">
+                          <div class="alignrow">
+                            <div class="playbacktime">0:00 / 0:32</div>
+                            <div class="playbacktime dim">Audio + Screen</div>
+                          </div>
+                          <div class="playertime-wrapper">
+                            <div class="playertime zero"></div>
+                          </div>
+                        </div><img src="images/Deleted.svg" loading="lazy" alt="" class="deleteicon" data-ix="delete-screen-recording">
+                      </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="activescreen-button" data-ix="display-none">
+                      <a href="#" class="button commentbutton w-button">Add audio + screen comment</a>
+                    </div>
+                    <div class="dimscreen-button">
+                      <a href="#" class="button commentbutton dim w-button">Add audio + screen comment</a>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+              <div class="w-form-done">
+                <div>Thank you! Your submission has been received!</div>
+              </div>
+              <div class="w-form-fail">
+                <div>Oops! Something went wrong while submitting the form.</div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngFor ="let comment of allCommentsResponseArray">
+            <a class="sidecomment clickable w-inline-block" [ngClass]="durationTime == comment.duration_start ?'active':''">
+              <div class="alignrow commentsheader" >
+                <div class="alignrow"><img src="assets/connor.jpg" loading="lazy" alt="" class="commentface">
+                  <div>
+                    <div class="sidecomment-name">{{comment.name}}</div>
+                    <div class="sidecomment-date">{{comment.updated_at | date }}</div>
+                  </div>
+                </div>
+                <div class="alignrow movedup">
+                  <div class="dropdowncircles">
+                    <div class="circlesdd"></div>
+                    <div class="circlesdd"></div>
+                    <div class="circlesdd"></div>
+                  </div>
+                  <div class="timestamp">{{comment.duration_start}}</div>
+                </div>
+              </div>
+              <div class="sidecomment-comment">{{comment.content}}</div>
+              <div class="sidecomment-comment">{{comment.activity_id}}</div>
+              <div class="commentwrap" [routerLink]="[comment.activity_id +'/all-comments']" >
+                <div>2 comments</div>
+                <div class="alignrow"><img src="assets/mat.jpg" loading="lazy" alt="" class="commentface inline"><img
+                    src="assets/connor.jpg" loading="lazy" alt="" class="commentface inline"></div>
+              </div>
+            </a>
+            <!-- <a class="sidecomment clickable active w-inline-block">
+              <div class="alignrow commentsheader">
+                <div class="alignrow"><img src="assets/mat.jpg" loading="lazy" alt="" class="commentface">
+                  <div>
+                    <div class="sidecomment-name">Mat Vogels</div>
+                    <div class="sidecomment-date">2 hours ago</div>
+                  </div>
+                </div>
+                <div class="alignrow movedup">
+                  <div class="dropdowncircles">
+                    <div class="circlesdd"></div>
+                    <div class="circlesdd"></div>
+                    <div class="circlesdd"></div>
+                  </div>
+                  <div class="timestamp">0:33</div>
+                </div>
+              </div>
+              <div class="sidecomment-comment">What do you guys think about this? Maybe we even allow the balance to go
+                negative? We can change the color to red.</div>
+              <div class="commentwrap" data-ix="open-comment-drawer" routerLink="/player/all-comments">
+                <div>6 comments</div>
+                <div class="alignrow"><img src="assets/connor.jpg" loading="lazy" alt="" class="commentface inline"><img
+                    src="assets/kylie.jpg" loading="lazy" alt="" class="commentface inline"><img src="assets/harry.jpg"
+                    loading="lazy" alt="" class="commentface inline"><img src="assets/mat.jpg" loading="lazy" alt=""
+                    class="commentface inline"></div>
+              </div>
+            </a>
+            <a class="sidecomment clickable w-inline-block">
+              <div class="alignrow commentsheader">
+                <div class="alignrow"><img src="assets/connor.jpg" loading="lazy" alt="" class="commentface">
+                  <div>
+                    <div class="sidecomment-name">Connor Mooney</div>
+                    <div class="sidecomment-date">1 hour ago</div>
+                  </div>
+                </div>
+                <div class="alignrow movedup">
+                  <div class="dropdowncircles">
+                    <div class="circlesdd"></div>
+                    <div class="circlesdd"></div>
+                    <div class="circlesdd"></div>
+                  </div>
+                  <div class="timestamp">0:45 - 0:55</div>
+                </div>
+              </div>
+              <div class="sidecomment-comment">I really like the transition between these onboarding steps.</div>
+              <div class="commentwrap nocomment" data-ix="open-empty-comment-drawer">
+                <div>Add a comment</div>
+              </div>
+            </a>
+            <a class="sidecomment clickable w-inline-block">
+              <div class="alignrow commentsheader">
+                <div class="alignrow"><img src="assets/harry.jpg" loading="lazy" alt="" class="commentface">
+                  <div>
+                    <div class="sidecomment-name">Harry Levine</div>
+                    <div class="sidecomment-date">Just now</div>
+                  </div>
+                </div>
+                <div class="alignrow movedup">
+                  <div class="dropdowncircles">
+                    <div class="circlesdd"></div>
+                    <div class="circlesdd"></div>
+                    <div class="circlesdd"></div>
+                  </div>
+                  <div class="timestamp">1:15</div>
+                </div>
+              </div>
+              <div class="audiorecorded">
+                <div class="play-icon inline"><img src="assets/iconfinder-icon-14.svg" loading="lazy" alt=""></div>
+                <div class="div-block">
+                  <div class="alignrow">
+                    <div class="playbacktime">0:00 / 0:32</div>
+                    <div class="playbacktime dim">Audio + Screen</div>
+                  </div>
+                  <div class="playertime-wrapper">
+                    <div class="playertime zero"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="commentwrap nocomment" data-ix="open-empty-comment-drawer">
+                <div>Add a comment</div>
+              </div>
+            </a> -->
+          </div>
+        </div>
+        <div *ngIf="isCompleted" class="w-tab-pane  w--tab-active">
+          <div class="sidecontent">
+          <a class="sidecomment clickable w-inline-block"  *ngFor ="let comment of allCommentsResponseArray">
+              <div class="alignrow sides" >
+                <div class="alignrow"><img src="assets/connor.jpg" loading="lazy" alt="" class="commentface">
+                  <div>
+                    <div class="sidecomment-name">{{comment.name}}</div>
+                    <div class="sidecomment-date">36 min ago</div>
+                  </div>
+                </div>
+                <div class="alignrow movedup">
+                  <div class="dropdowncircles">
+                    <div class="circlesdd"></div>
+                    <div class="circlesdd"></div>
+                    <div class="circlesdd"></div>
+                  </div>
+                  <div class="timestamp">{{comment.duration_start}}</div><img src="assets/Deleted.svg" loading="lazy" alt=""
+                    class="completedicon">
+                </div>
+              </div>
+              <div class="sidecomment-comment">{{comment.content}}</div>
+              <div class="commentwrap" [routerLink]="[comment.activity_id +'/all-comments']">
+                <div >2 comments </div>
+                <div class="alignrow"><img src="assets/mat.jpg" loading="lazy" alt="" class="commentface inline"><img
+                    src="assets/connor.jpg" loading="lazy" alt="" class="commentface inline"></div>
+              </div>
+            </a>
+            <!-- <a class="sidecomment clickable w-inline-block">
+              <div class="alignrow sides">
+                <div class="alignrow"><img src="assets/harry.jpg" loading="lazy" alt="" class="commentface">
+                  <div>
+                    <div class="sidecomment-name">Harry Levine</div>
+                    <div class="sidecomment-date">Just now</div>
+                  </div>
+                </div>
+                <div class="alignrow movedup">
+                  <div class="dropdowncircles">
+                    <div class="circlesdd"></div>
+                    <div class="circlesdd"></div>
+                    <div class="circlesdd"></div>
+                  </div>
+                  <div class="timestamp">1:15</div>
+                  <img src="assets/Completed.svg" loading="lazy" alt="" class="completedicon">
+                </div>
+              </div>
+              <div class="sidecomment-comment"><strong>@mat</strong> can we move the timestamp to the bottom of the card
+                like in production?</div>
+              <div class="commentwrap nocomment" data-ix="open-empty-comment-drawer">
+                <div>Add a comment</div>
+              </div>
+            </a> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- <div class="video-loader">
+    <div></div>
+</div> -->
+</div>

@@ -1,0 +1,65 @@
+<div class="container">
+    <h1 class="heading">My Profile</h1>
+    <div class="herosubtext">Update and manage your profile settings.</div>
+    <div class="flexcontainer">
+        <div class="sideflex">
+            <div class="card">
+                <div class="settings-block green-callout">
+                    <div class="card-heading green">You have 14 days left on your free trial.</div>
+                    <div class="description space-bottom">Upgrade before the month is up to continue using Zestful.</div>
+                    <a href="#" class="button-2 full-button w-button">Add a credit card</a>
+                </div>
+                <a href="#" class="card-2 row-card align-sides download w-inline-block">
+                    <div class="align-row">
+                        <img src="https://uploads-ssl.webflow.com/5debdc24f88fbc10df2e5766/5df5d3e5f373c8bf93e067c8_iconfinder-icon%20(21).svg"
+                            alt="" class="button-icon">
+                        <div>Discover ending 3245</div>
+                    </div>
+                    <div class="remove-link small-link">Edit</div>
+                </a>
+                <div class="card-2 row-card align-sides settings-card">
+                    <div>
+                        <div class="align-row">
+                            <div class="dim-detail">Next billing date<br><span class="dim-2"></span></div>
+                        </div>
+                        <div>December 1 2019<span class="dim-2"></span></div>
+                    </div>
+                </div>
+                <div class="card-2 row-card align-sides settings-card">
+                    <div class="align-row">
+                        <div>Monthly <span class="dim-detail">($3/person/mo)</span><span class="dim-2"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mainflex">
+            <div class="card">
+                <div class="alignrow topalign">
+                    <div class="profilephoto">
+                        <img *ngIf="imageUrl" [src]="imageUrl" loading="lazy" alt="user_profile">
+                        <a href="#" class="updatephoto w-inline-block">
+                            <img src="assets/iconfinder-icon-32.svg" loading="lazy" alt="">
+                            <input #Image type="file" (change)="handleFileInput($event.target.files)"  accept=".png,.jpg,.jpeg"/>
+                        </a>
+                    </div>
+                    <div class="aboutform w-form">
+                        <form id="email-form" name="email-form" data-name="Email Form">
+                            <label for="name" class="fieldlabel">Name</label>
+                            <input type="text" class="formfield w-input" maxlength="256" name="name" data-name="Name" placeholder="" id="name">
+                            <label for="name-3" class="fieldlabel">Email address</label>
+                            <input type="text" class="formfield w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="email" disabled>
+                            <!-- <label for="name-3" class="fieldlabel">Email address</label>
+                            <input type="text" class="formfield w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2"> -->
+                            <input type="submit" value="Submit" data-wait="Please wait..." class="w-button"></form>
+                        <div class="w-form-done">
+                            <div>Thank you! Your submission has been received!</div>
+                        </div>
+                        <div class="w-form-fail">
+                            <div>Oops! Something went wrong while submitting the form.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

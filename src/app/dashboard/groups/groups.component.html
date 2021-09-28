@@ -1,0 +1,126 @@
+<div class="container">
+  <div class="alignrow">
+    <h1 class="heading">🚀 Product</h1>
+    <a href="#" class="button editgroup w-button">Edit</a>
+  </div>
+  <div class="herosubtext">All videos and screenshots that you&#x27;ve shared to the Product Group.</div>
+  <div class="groupmembers">
+    <div class="sidelabel nopadding">Group members (6) <span class="dim pending">(4 pending invites)</span></div>
+    <div class="alignrow">
+      <div class="faceblock admin"><img src="assets/mat.jpg" loading="lazy" alt="" class="largeface">
+        <div class="facemenu">
+          <div class="dropdownlink-block header" data-ix="close-face-menu"> Mat Vogels👑</div>
+          <a href="#" class="dropdownlink-block w-inline-block">
+            <div>Make an admin of Group</div>
+          </a>
+          <a href="#" class="dropdownlink-block w-inline-block">
+            <div>Remove from Group</div>
+          </a>
+        </div>
+      </div>
+      <div class="faceblock admin"><img src="assets/malte.jpg" loading="lazy" alt="" class="largeface">
+        <div class="editoverlay" data-ix="face-block"> <img src="assets/iconfinder-icon-42.svg" loading="lazy" alt="">
+        </div>
+        <!-- <div class="facemenu">
+					<div class="dropdownlink-block header" data-ix="close-face-menu">Malte Muenke 👑</div>
+					<a href="#" class="dropdownlink-block w-inline-block">
+						<div>Make non-admin of Group</div>
+					</a>
+					<a href="#" class="dropdownlink-block w-inline-block">
+						<div>Remove from Group</div>
+					</a>
+				</div> -->
+      </div>
+      <div class="faceblock"><img src="assets/connor.jpg" loading="lazy" alt="" class="largeface">
+        <div class="editoverlay" data-ix="face-block"> <img src="assets/iconfinder-icon-42.svg" loading="lazy" alt="">
+        </div>
+        <!-- <div class="facemenu">
+					<div class="dropdownlink-block header" data-ix="close-face-menu">Connor Mooney</div>
+					<a href="#" class="dropdownlink-block w-inline-block">
+						<div>Make an admin of Group</div>
+					</a>
+					<a href="#" class="dropdownlink-block w-inline-block">
+						<div>Remove from Group</div>
+					</a>
+				</div> -->
+      </div>
+      <div class="faceblock"> <img src="assets/kylie.jpg" loading="lazy" alt="" class="largeface">
+        <div class="editoverlay" data-ix="face-block"> <img src="assets/iconfinder-icon-42.svg" loading="lazy" alt="">
+        </div>
+        <!-- <div class="facemenu">
+					<div class="dropdownlink-block header" data-ix="close-face-menu">Kylie Ryan</div>
+					<a href="#" class="dropdownlink-block w-inline-block">
+						<div>Make an admin of Group</div>
+					</a>
+					<a href="#" class="dropdownlink-block w-inline-block">
+						<div>Remove from Group</div>
+					</a>
+				</div> -->
+      </div>
+      <div class="faceblock"> <img src="assets/harry.jpg" loading="lazy" alt="" class="largeface">
+        <div class="editoverlay" data-ix="face-block"> <img src="assets/iconfinder-icon-42.svg" loading="lazy" alt="">
+        </div>
+        <!-- <div class="facemenu">
+					<div class="dropdownlink-block header" data-ix="close-face-menu">Harry Levine</div>
+					<a href="#" class="dropdownlink-block w-inline-block">
+						<div>Make an admin of Group</div>
+					</a>
+					<a href="#" class="dropdownlink-block w-inline-block">
+						<div>Remove from Group</div>
+					</a>
+				</div> -->
+      </div>
+      <div class="faceblock"><img src="assets/nate.jpg" loading="lazy" alt="" class="largeface">
+        <div class="editoverlay" data-ix="face-block"> <img src="assets/iconfinder-icon-42.svg" loading="lazy" alt="">
+        </div>
+        <div class="facemenu">
+          <div class="dropdownlink-block header" data-ix="close-face-menu">Nate Vogels 👑</div>
+          <a href="#" class="dropdownlink-block w-inline-block">
+            <div>Make an admin of Group</div>
+          </a>
+          <a href="#" class="dropdownlink-block w-inline-block">
+            <div>Remove from Group</div>
+          </a>
+        </div>
+      </div>
+      <div class="invitebutton" data-ix="invite-new">
+        <a href="#" class="button newgroupmember w-button">+ Invite new</a>
+      </div>
+      <div class="newgroupmembers-form">
+        <div class="formblock w-form">
+          <form id="email-form" name="email-form" data-name="Email Form" class="alignform">
+            <input type="email" class="textfield newmember w-input" maxlength="256" name="email" data-name="Email"
+              placeholder="Add email addresses separated by commas..." id="email" required="">
+            <input type="submit" value="Invite" data-wait="Please wait..." class="button submitbutton w-button">
+            <div class="dim cancel" data-ix="cancel-invite">cancel</div>
+          </form>
+          <div class="w-form-done">
+            <div>Thank you! Your submission has been received!</div>
+          </div>
+          <div class="w-form-fail">
+            <div>Oops! Something went wrong while submitting the form.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="w-tabs">
+    <div class="tabs-menu w-tab-menu">
+      <a [routerLink]="['/dashboard/groups/all-group-items']" routerLinkActive="w--current"
+        class="filtertab-link w-inline-block w-tab-link">
+        <div>All items</div>
+      </a>
+      <a [routerLink]="['/dashboard/groups/group-videos']" routerLinkActive="w--current"
+        class="filtertab-link w-inline-block w-tab-link">
+        <div>Videos</div>
+      </a>
+      <a [routerLink]="['/dashboard/groups/group-screenshots']" routerLinkActive="w--current"
+        class="filtertab-link w-inline-block w-tab-link">
+        <div>Screenshots</div>
+      </a>
+    </div>
+    <div class="tabs-content w-tab-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

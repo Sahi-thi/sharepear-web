@@ -1,0 +1,144 @@
+
+<div class="commentside allcommentside">
+    <!-- detailed comments top boxx -->
+    <div class="commentsdrawer">
+        <div class="subcomments-wrapper">
+            <div class="sidecomment topcomment">
+                <div class="drawerheader">
+                    <a routerLink='/player' class="button w-button" data-ix="close-comment-drawer">Back to all
+                        comments</a>
+                </div>
+                <div class="alignrow sides">
+                    <div class="alignrow"><img src="assets/mat.jpg" loading="lazy" alt="" class="commentface">
+                        <div>
+                            <div class="sidecomment-name">Mat Vogels</div>
+                            <div class="sidecomment-date">2 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="timestamp">0:33</div>
+                </div>
+                <div class="sidecomment-comment">What do you guys think about this? Maybe we even allow the balance to
+                    go negative? We can change the color to red.</div>
+            </div>
+            <div class="label">6 comments</div>
+            <div class="sidecomment" *ngFor="let subComment of subCommentsArray">
+                <div class="alignrow sides">
+                    <div class="alignrow"><img src="assets/connor.jpg" loading="lazy" alt="" class="commentface">
+                        <div>
+                            <div class="sidecomment-name">Connor Mooney</div>
+                            <div class="sidecomment-date">2 hours ago</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidecomment-comment">{{subComment.content}}</div>
+            </div>
+            <!-- <div class="sidecomment">
+                <div class="alignrow sides">
+                    <div class="alignrow"><img src="assets/harry.jpg" loading="lazy" alt="" class="commentface">
+                        <div>
+                            <div class="sidecomment-name">Harry Levine</div>
+                            <div class="sidecomment-date">2 hours ago</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidecomment-comment">Much cleaner! LGTM!</div>
+            </div>
+            <div class="sidecomment">
+                <div class="alignrow sides">
+                    <div class="alignrow"><img src="assets/mat.jpg" loading="lazy" alt="" class="commentface">
+                        <div>
+                            <div class="sidecomment-name">Mat Vogels</div>
+                            <div class="sidecomment-date">1 hour</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidecomment-comment"><strong>@connor</strong> it will be rare to have negative balances, but
+                    something we still need to prepare for.</div>
+            </div>
+            <div class="sidecomment">
+                <div class="alignrow sides">
+                    <div class="alignrow"><img src="assets/kylie.jpg" loading="lazy" alt="" class="commentface">
+                        <div>
+                            <div class="sidecomment-name">Kylie Ryan</div>
+                            <div class="sidecomment-date">30 min ago</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidecomment-comment">Perfect! I think our customers will love this.</div>
+            </div>
+            <div class="sidecomment">
+                <div class="alignrow sides">
+                    <div class="alignrow"><img src="assets/mat.jpg" loading="lazy" alt="" class="commentface">
+                        <div>
+                            <div class="sidecomment-name">Mat Vogels</div>
+                            <div class="sidecomment-date">20 min ago</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidecomment-comment">Thanks everyone! <strong>@harry</strong> it&#x27;s good to go for you!
+                </div>
+            </div>
+            <div class="sidecomment">
+                <div class="alignrow sides">
+                    <div class="alignrow"><img src="assets/harry.jpg" loading="lazy" alt="" class="commentface">
+                        <div>
+                            <div class="sidecomment-name">Harry Levine</div>
+                            <div class="sidecomment-date">Just now</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidecomment-comment">Thanks!</div>
+            </div> -->
+            <div class="sidecomment commentcomment">
+                <div class="formblock w-form">
+                    <form [formGroup]="addNewSubCommentForm"
+                    id="email-form" name="email-form" data-name="Email Form"><textarea
+                            placeholder="Add a new comment..." formControlName="content" maxlength="5000" id="field" name="field"
+                            class="textarea w-input"></textarea><input (click)="onClickAddSubComment()" type="submit" value="Add comment"
+                            data-wait="Please wait..." class="button commentbutton w-button"></form>
+                    <div class="w-form-done">
+                        <div>Thank you! Your submission has been received!</div>
+                    </div>
+                    <div class="w-form-fail">
+                        <div>Oops! Something went wrong while submitting the form.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- details comments -->
+    <div class="commentsdrawer-empty shorter">
+        <div class="sidecomment topcomment">
+            <div class="drawerheader">
+                <a href="#" class="button w-button" data-ix="close-empty-comment-drawer">Back to all comments</a>
+            </div>
+            <div class="alignrow sides">
+                <div class="alignrow"><img src="assets/connor.jpg" loading="lazy" alt="" class="commentface">
+                    <div>
+                        <div class="sidecomment-name">Connor Mooney</div>
+                        <div class="sidecomment-date">2 hours ago</div>
+                    </div>
+                </div>
+                <div class="timestamp">0:45 - 0:55</div>
+            </div>
+            <div class="sidecomment-comment">I really like the transition between these onboarding steps.</div>
+        </div>
+        <div class="subcomments-wrapper">
+            <div class="label">0 comments</div>
+            <div class="sidecomment commentcomment">
+                <div class="formblock w-form">
+                    <form id="email-form" name="email-form" data-name="Email Form"><textarea
+                            placeholder="Add a new comment..." maxlength="5000" id="field-2" name="field-2"
+                            data-name="Field 2" class="textarea w-input"></textarea><input type="submit"
+                            value="Add comment" data-wait="Please wait..." class="button commentbutton w-button"></form>
+                    <div class="w-form-done">
+                        <div>Thank you! Your submission has been received!</div>
+                    </div>
+                    <div class="w-form-fail">
+                        <div>Oops! Something went wrong while submitting the form.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

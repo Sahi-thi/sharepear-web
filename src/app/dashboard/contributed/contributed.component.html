@@ -1,0 +1,23 @@
+<div class="container">
+  <h1 class="heading">Contributed</h1>
+  <div class="herosubtext">All active videos and screenshots that you&#x27;ve commented on.</div>
+  <div data-duration-in="300" data-duration-out="100" class="w-tabs">
+    <div class="tabs-menu w-tab-menu">
+      <a [routerLink]="['/dashboard/contributed/all-contribute-items']" routerLinkActive="w--current"
+        class="filtertab-link w-inline-block w-tab-link">
+        <div>All items</div>
+      </a>
+      <a [routerLink]="['/dashboard/contributed/contribute-videos']" routerLinkActive="w--current"
+        class="filtertab-link w-inline-block w-tab-link">
+        <div>Videos</div>
+      </a>
+      <a [routerLink]="['/dashboard/contributed/contribute-screenshots']" routerLinkActive="w--current"
+        class="filtertab-link w-inline-block w-tab-link">
+        <div>Screenshots</div>
+      </a>
+    </div>
+    <div class="tabs-content w-tab-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

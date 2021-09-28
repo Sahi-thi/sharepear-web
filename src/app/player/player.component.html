@@ -1,0 +1,110 @@
+<div class="pagewrapper">
+  <!-- <app-video-player></app-video-player> -->
+
+  <div class="videoside">
+    <div class="videoplayer">
+      <div class="video-align-center">
+
+        <div class="videoiconblock">
+          <div class="videoeditor">
+            <a class="videoeditor-icon marker w-inline-block" [ngClass]="isDrawPointer?'active':''" (click)="onClickDrawPoint()"><img src="assets/Spot.svg"
+                loading="lazy" alt=""></a>
+            <a class="videoeditor-icon pencil w-inline-block" [ngClass]="isDrawMarker?'active':''" (click)="onClickDrawText()"><img src="assets/Pencil.svg"
+                loading="lazy" alt=""></a>
+
+            <div class="shortcutspencil" *ngIf="isDrawPointer">(ctrl + d)</div>
+
+            <div class="pencil-edits" *ngIf="isDrawMarker">
+              <a class="videoeditor-icon pencil w-inline-block" (click)="onClickUndo()">
+                <img src="assets/Green-Undo.svg" loading="lazy" alt="">
+              </a>
+              <div *ngIf="isDrawMarker">(ctrl + z)</div>
+            </div>
+            <div class="shortcutspencil paste" *ngIf="isDrawMarker">(ctrl + p)</div>
+
+          </div>
+
+          <div class="dblclick" *ngIf="isDrawPointer">Note: You can double click anywhere to leave a comment for the whole frame.</div>
+        </div>
+        <!-- <div class="videoscreen"> -->
+        <!-- <div class="commentcircle"></div> -->
+        <div class="videocontent" id="videoContentCanvasDisplay">
+         
+          <canvas id="initialCanvas" style="z-index: 1;"></canvas>
+          <canvas id="readOnlyCanvas" style="z-index: 2;"></canvas>
+          <canvas id="drawCanvas" style="z-index: 3;"></canvas>
+          <video class="videodisplay " id="videoID"  style="z-index:0;"></video>
+          <div class="recordingpanel-block" *ngIf="false">
+            <div class="videorecording-panel editing">
+              <a class="videoeditor-icon pencil active w-inline-block">
+                <img src="assets/Pencil-W.svg" loading="lazy" alt="">
+              </a>
+              <a class="videoeditor-icon undo w-inline-block">
+                <img src="assets/Green-Undo.svg" loading="lazy" alt="">
+              </a>
+            </div>
+            <div class="videorecording-panel">
+              <a class="videoeditor-icon stop w-inline-block">
+                <div class="stopbutton">
+                  <img src="assets/Stop.svg" loading="lazy" alt="">
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- </div> -->
+        <div class="playerfeed">
+          <a class="play-icon w-inline-block">
+            <img id="playPauseIcon" (click)="onClickPlayVideo()" src="assets/iconfinder-icon-14.svg" loading="lazy"
+              alt="">
+          </a>
+          <img src="assets/volume_up.svg" loading="lazy" alt="" id="muteUnmuteIcon" (click)="onClickMuteUnmute()">
+          <!-- <input class="sound-bar" type="range" min="1" max="100" value="50" id="volume"  (click)="onAdjustVolume()">  -->
+          <progress class="sound-bar" value="0" min="0" max="100" id="volume"
+            (click)="onAdjustVolume($event)"></progress>
+          <!-- <div class="timelinetimer">0:33 / 1:33</div> -->
+          <div class="timelinetimer">
+
+            <span id="currentDurationTime"></span> / <span id="totalDurationTime"></span>
+          </div>
+          <div class="timelinewrapper">
+            <div id="progressbarid">
+              <progress class="timline" value="0" min="0" max="100" id="progressbar"></progress>
+            </div>
+            <!-- <div class="timline">
+
+              <div class="timelinetrack"><img src="assets/mat.jpg" loading="lazy" alt="" class="timelineface active">
+                <div class="timelinedivider active"></div>
+              </div>
+              <a class="timelinetrack _45 w-inline-block"><img src="assets/connor.jpg" loading="lazy" alt=""
+                  class="timelineface">
+                <div class="timelinedivider duration"></div>
+                <div class="timelinedivider _10sec"></div>
+                <div class="timelinedivider"></div>
+              </a>
+              <a class="timelinetrack _105 w-inline-block"><img src="assets/connor.jpg" loading="lazy" alt=""
+                  class="timelineface">
+                <div class="timelinedivider"></div>
+              </a>
+              <div class="timelinetime"></div>
+              <div class="timelinetrack _115"><img src="assets/harry.jpg" loading="lazy" alt="" class="timelineface">
+                <div class="timelinedivider"></div>
+              </div>
+            </div> -->
+          </div>
+
+
+          <!-- </div> -->
+
+        </div>
+
+      </div>
+    </div>
+
+    <router-outlet></router-outlet>
+    <!-- <div class="video-loader">
+      <div></div>
+  </div> -->
+  </div>
+</div>

@@ -1,0 +1,193 @@
+<div class="dashboardwrapper">
+  <div class="fixednav">
+    <a target="_blank" class="logoicon w-inline-block" routerLink="/login">
+      <img src="assets/iconfinder_pear_2564980.svg" loading="lazy" alt="">
+    </a>
+    <div class="alignrow labelrow">
+      <div class="sidelabel">Libraries</div>
+    </div>
+
+    <a routerLinkActive="active" [routerLink]="['/dashboard/personal']" class="sidelink grayscale w-inline-block">
+      <div class="alignrow"><img src="assets/Home.svg" loading="lazy" alt="" class="sidelink-icon">
+        <div>Personal</div>
+      </div>
+    </a>
+    <a routerLinkActive="active" [routerLink]="['/dashboard/contributed']" class="sidelink grayscale w-inline-block">
+      <div class="alignrow"><img src="assets/Comment.svg" loading="lazy" alt="" class="sidelink-icon done">
+        <div>Contributed</div>
+      </div>
+    </a>
+    <a class="sidelink grayscale w-inline-block">
+      <div class="alignrow">
+        <img src="assets/iconfinder-icon-40.svg" loading="lazy" alt="" class="sidelink-icon star">
+        <div>Favorites</div>
+      </div>
+    </a>
+    <a class="sidelink grayscale w-inline-block">
+      <div class="alignrow">
+        <img src="assets/Check-Done.svg" loading="lazy" alt="" class="sidelink-icon done">
+        <div>Completed</div>
+      </div>
+    </a>
+
+
+    <div class="alignrow labelrow"><img src="assets/Flag.svg" loading="lazy" alt="" class="sidelink-icon groups">
+      <div class="sidelabel nopad">Groups</div>
+    </div>
+    <a routerLinkActive="active" [routerLink]="['/dashboard/groups']" class="sidelink w-inline-block">
+      <div class="alignrow">
+        <img src="assets/rockey.png" loading="lazy" alt="" class="sidelink-icon">
+        <div>Product</div>
+      </div>
+    </a>
+    <a class="sidelink w-inline-block">
+      <div class="alignrow">
+        <img src="assets/sparkles.png" loading="lazy" alt="" class="sidelink-icon">
+        <div>CX</div>
+      </div>
+    </a>
+    <a class="sidelink w-inline-block">
+      <div class="alignrow"><img src="assets/paint.png" loading="lazy" alt="" class="sidelink-icon">
+        <div>Marketing</div>
+      </div>
+    </a>
+    <a class="sidelink w-inline-block">
+      <div class="alignrow"><img src="assets/man-technologist_1f468-200d-1f4bb.png" loading="lazy" alt=""
+          class="sidelink-icon">
+        <div>New Website</div>
+      </div>
+    </a>
+    <div class="sidelink createteam" (click)="createAccount($event)">
+      <div>Create new Group</div>
+      <div class="groupcreation" *ngIf="isCreatingAccount">
+        <div class="emojiselector">
+          <img src="assets/crown.png" loading="lazy" alt="">
+        </div>
+        <div class="groupform w-form">
+          <form id="email-form" name="email-form" data-name="Email Form" class="alignform">
+            <input type="email" class="formfield short w-input" maxlength="256" name="email" data-name="Email"
+              placeholder="Name the Group..." id="email" required="">
+            <input type="submit" value="Create" data-wait="Please wait..." class="button submitbutton group w-button"
+              data-ix="close-group">
+            <a class="dimlink" data-ix="close-group" (click)="cancelCreateAccount($event)">Cancel</a>
+          </form>
+          <div class="w-form-done">
+            <div>Thank you! Your submission has been received!</div>
+          </div>
+          <div class="w-form-fail">
+            <div>Oops! Something went wrong while submitting the form.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottomnav">
+      <a routerLinkActive="active" [routerLink]="['/dashboard/team-billing']" class="sidelink w-inline-block">
+        <div class="alignrow">
+          <img src="assets/Team-Icon.png" loading="lazy" alt="" class="sidelink-icon teambilling">
+          <div>Team Billing</div>
+        </div>
+      </a>
+      <div class="sidelink" data-ix="show-notifications" (click)="showNotification()">
+        <div class="alignrow">
+          <img src="assets/iconfinder-icon-35.svg" loading="lazy" alt="" class="sidelink-icon notifs">
+          <div>Activity</div>
+        </div>
+        <div class="notificationswrapper" *ngIf="isShowingNotification">
+          <div class="notifsheader">Notifications</div>
+          <a class="sidelink notifslink w-inline-block">
+            <img src="assets/harry.jpg" loading="lazy" alt="" class="notifsicon">
+            <div>
+              <div class="notifstext"><strong>Harry Levine</strong> commented on <strong>&quot;Activity feed
+                  updates&quot;</strong> video.</div>
+              <div class="dim smallest">1 min ago</div>
+            </div>
+          </a>
+          <a class="sidelink notifslink w-inline-block"><img src="assets/malte.jpg" loading="lazy" alt=""
+              class="notifsicon">
+            <div>
+              <div class="notifstext"><strong>Malte Muenke</strong> commented on <strong>&quot;Activity feed
+                  updates&quot;</strong> video.</div>
+              <div class="dim smallest">30 min ago</div>
+            </div>
+          </a>
+          <a class="sidelink notifslink w-inline-block"><img src="assets/kylie.jpg" loading="lazy" alt=""
+              class="notifsicon">
+            <div>
+              <div class="notifstext"><strong>Kylie Ryan</strong> added a new video to the
+                <strong>&quot;CX&quot;</strong> group.</div>
+              <div class="dim smallest">2 hours ago</div>
+            </div>
+          </a>
+          <a class="sidelink notifslink w-inline-block"><img src="assets/harry.jpg" loading="lazy" alt=""
+              class="notifsicon">
+            <div>
+              <div class="notifstext">Harry Levine commented on <strong>&quot;Activity feed updates&quot;</strong>
+                video.</div>
+              <div class="dim smallest">1 day ago</div>
+            </div>
+          </a>
+          <a class="sidelink notifslink w-inline-block"><img src="assets/harry.jpg" loading="lazy" alt=""
+              class="notifsicon">
+            <div>
+              <div class="notifstext">Harry Levine commented on <strong>&quot;Activity feed updates&quot;</strong>
+                video.</div>
+              <div class="dim smallest">5 min ago</div>
+            </div>
+          </a>
+          <a class="sidelink notifslink w-inline-block"><img src="assets/harry.jpg" loading="lazy" alt=""
+              class="notifsicon">
+            <div>
+              <div class="notifstext">Harry Levine commented on <strong>&quot;Activity feed updates&quot;</strong>
+                video.</div>
+              <div class="dim smallest">5 min ago</div>
+            </div>
+          </a>
+          <a class="sidelink notifslink w-inline-block"><img src="assets/harry.jpg" loading="lazy" alt=""
+              class="notifsicon">
+            <div>
+              <div class="notifstext">Harry Levine commented on <strong>&quot;Activity feed updates&quot;</strong>
+                video.</div>
+              <div class="dim smallest">5 min ago</div>
+            </div>
+          </a>
+          <a class="sidelink notifslink w-inline-block"><img src="assets/harry.jpg" loading="lazy" alt=""
+              class="notifsicon">
+            <div>
+              <div class="notifstext">Harry Levine commented on <strong>&quot;Activity feed updates&quot;</strong>
+                video.</div>
+              <div class="dim smallest">5 min ago</div>
+            </div>
+          </a>
+          <a class="sidelink notifslink w-inline-block"><img src="assets/harry.jpg" loading="lazy" alt=""
+              class="notifsicon">
+            <div>
+              <div class="notifstext">Harry Levine commented on <strong>&quot;Activity feed updates&quot;</strong>
+                video.</div>
+              <div class="dim smallest">5 min ago</div>
+            </div>
+          </a>
+          <a class="sidelink notifslink w-inline-block"><img src="assets/harry.jpg" loading="lazy" alt=""
+              class="notifsicon">
+            <div>
+              <div class="notifstext">Harry Levine commented on <strong>&quot;Activity feed updates&quot;</strong>
+                video.</div>
+              <div class="dim smallest">5 min ago</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <a routerLinkActive="active" [routerLink]="['/dashboard/profile']" class="sidelink profile w-inline-block">
+        <div class="alignrow"><img src="assets/mat.jpg" loading="lazy" alt="" class="sidelink-icon profile">
+          <div>
+            <div>Mat Vogels</div>
+            <div class="dim small">mat@zestful.com</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="maincontent">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,105 @@
+<div class="fullmodal">
+    <div class="closemodal" data-ix="close-modal"></div>
+    <div class="card">
+        <div class="modalcontent">
+            <a href="#" class="modallogo w-inline-block"><img src="assets/iconfinder_pear_2564980.svg" loading="lazy" alt=""></a>
+            <h2 class="modalheader">Create a free account to add this comment</h2>
+            <div class="modalsubheader">Or log in to an existing account</div>
+            <div data-duration-in="300" data-duration-out="100" class="w-tabs">
+                <div class="signup-tabs-menu w-tab-menu">
+                    <a (click)="signup_login_tab_display('signup')" [ngClass]="notUser?'':'w--current'" class="signup-tabslink w-inline-block w-tab-link">
+                        <div>Sign up</div>
+                    </a>
+                    <a (click)="signup_login_tab_display('login')" [ngClass]="notUser?'w--current':''" class="signup-tabslink w-inline-block w-tab-link">
+                        <div>Login</div>
+                    </a>
+                </div>
+                <div class="w-tab-content">
+                    <!-- signup -->
+                    <div *ngIf="notUser" class="tabpane w-tab-pane">
+                        <div>
+                            <div class="loginform w-form">
+                                <form [formGroup]="loginForm" (ngSubmit)='onLoginFormSubmit()'>
+                                    <a  class="button fullbutton google w-inline-block" (click)='sigupWithGoogle()'>
+                                        <img src="assets/googlelogo.png" loading="lazy" alt="" class="googleicon">
+                                        <div>Sign up with Google</div>
+                                    </a>
+                                    <div class="orwrapper">
+                                        <div class="divider"></div>
+                                        <div class="ortext">OR</div>
+                                    </div>
+                                    <!-- <div class="p-relative">
+                                        <label for="name-2" class="fieldlabel">Name</label>
+                                        <input type="text" formControlName="name" class="formfield w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2">
+                                    </div> -->
+                                    <div class="p-relative">
+                                        <label for="email-3" class="fieldlabel">Email address</label>
+                                        <input type="email" formControlName="email" class="formfield w-input" [ngClass]="{'error':(loginForm.get('email').hasError('required') && loginForm.get('email').touched) || (loginForm.get('email').hasError('required') && loginsubmit) || loginForm.get('email').hasError('pattern') }" maxlength="256" name="email-3" data-name="Email 3" placeholder="" id="email-3" required="">
+                                        <p class='input-error' *ngIf="(loginForm.get('email').hasError('required') && loginForm.get('email').touched) || (loginForm.get('email').hasError('required') && loginsubmit)">Email is mandatory</p>
+                                        <p class='input-error' *ngIf="loginForm.get('email').hasError('pattern')">
+                                            Enter valid email</p>
+                                    </div>
+                                    <div class="p-relative">
+                                        <label for="email-4" class="fieldlabel">Password</label>
+                                        <input type="email" formControlName="password" class="formfield w-input" [ngClass]="{'error':(loginForm.get('password').hasError('required') && loginForm.get('password').touched) || (loginForm.get('password').hasError('required') && loginsubmit) || loginForm.hasError('minlength','password') }" maxlength="256" name="email-2" data-name="Email 2" placeholder="" id="email-2" required="">
+                                        <p class='input-error' *ngIf="(loginForm.get('password').hasError('required') && loginForm.get('password').touched) || (loginForm.get('password').hasError('required') && loginsubmit)">Password is mandatory</p>
+                                        <p class='input-error' *ngIf=" loginForm.hasError('minlength','password') ">Enter the password at least 8 characters</p>
+                                        
+                                    </div>
+                                    <input type="submit" [value]=loginbuttonData data-wait="Please wait..." class="button fullbutton w-button mt-30" >
+                                </form>
+                                <div class="w-form-done">
+                                    <div>Thank you! Your submission has been received!</div>
+                                </div>
+                                <div class="w-form-fail">
+                                    <div>Oops! Something went wrong while submitting the form.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- login -->
+                    <div *ngIf="!notUser" class="tabpane w-tab-pane">
+                        <div>
+                            <div class="loginform w-form">
+                                <form [formGroup]="signupForm">
+                                    <a  class="button fullbutton google w-inline-block" (click)='sigupWithGoogle()'>
+                                        <img src="assets/googlelogo.png" loading="lazy" alt="" class="googleicon">
+                                        <div>Sign up with Google</div>
+                                    </a>
+                                    <div class="orwrapper">
+                                        <div class="divider"></div>
+                                        <div class="ortext">OR</div>
+                                    </div>
+                                    <div class="p-relative">
+                                        <label for="name" class="fieldlabel">Name</label>
+                                        <input type="text" formControlName="name" class="formfield w-input" maxlength="256" name="name" data-name="Name" placeholder="e.g. Leslie Knopp" id="name"> 
+                                    </div>
+                                    <div class="p-relative">
+                                        <label for="email" class="fieldlabel">Email address</label>
+                                        <input type="email" formControlName="email" class="formfield w-input" [ngClass]="{'error':(signupForm.get('email').hasError('required') && signupForm.get('email').touched) || (signupForm.get('email').hasError('required') && submitted) || signupForm.get('email').hasError('pattern')}"maxlength="256" name="email" data-name="Email" placeholder="e.g. leslie@pandr.com" id="email" required="">
+                                        <p class='input-error' *ngIf="(signupForm.get('email').hasError('required') && signupForm.get('email').touched) || (signupForm.get('email').hasError('required') && submitted)">Email is mandatory</p>
+                                        <p class='input-error' *ngIf="signupForm.get('email').hasError('pattern')">
+                                            Enter valid email</p>
+                                    </div>
+                                    <div class="p-relative">
+                                        <label for="email-2" class="fieldlabel">Password</label>
+                                        <input type="email" formControlName="password" class="formfield w-input" [ngClass]="{'error':(signupForm.get('password').hasError('required') && signupForm.get('password').touched)  || (signupForm.get('email').hasError('required') && submitted) || signupForm.hasError('minlength','password')}" maxlength="256" name="email-2" data-name="Email 2" placeholder="Min of 8 characters" id="email-2" required="">
+                                        <p class='input-error' *ngIf="(signupForm.get('password').hasError('required') && signupForm.get('password').touched)  || (signupForm.get('password').hasError('required') && submitted)">Password is mandatory</p>
+                                        <p class='input-error' *ngIf=" signupForm.hasError('minlength','password') ">Enter the password at least 8 characters</p>
+                                    </div>
+                                    <input type="submit" value="Create account" (click)="onSignupFormSubmit()"data-wait="Please wait..." class="button fullbutton w-button" data-ix="close-modal">
+                                </form>
+                                <div class="w-form-done">
+                                    <div>Thank you! Your submission has been received!</div>
+                                </div>
+                                <div class="w-form-fail">
+                                    <div>Oops! Something went wrong while submitting the form.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
